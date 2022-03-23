@@ -9,14 +9,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use('/login', require('./controllers/user.controller'));
-/**
- * METHOD: GET
- * ROUTE: /todo
- * PURPOSE: Get all tasks
- */
-app.get("/fxRate", authorize(), async (req, res) => {
-  const result = await db.from('v_currencies').select("currency_code", "rate");
-  res.json({ result });
+
+app.get("/fxRate", authorize(), async (req, response) => {
+  const result = await db.from('currencies').select("currency_code", "rate");
+  response.json({ result });
 });
 
 app.get("/fxRate/:target", authorize(), async (req, res) => {

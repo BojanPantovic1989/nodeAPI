@@ -2,15 +2,23 @@ require('dotenv').config();
 
 module.exports = {
     development: {
-        client: 'mysql2',
-        connection: process.env.DB_URL
+        client: 'mssql',
+        connection: {
+            user: 'sa',
+            password: '8h48t984hT',
+            server: 'docker.for.win.localhost',
+            database: 'Demo',
+            options: {
+                port: 1433 
+            }
+        }
     },
     staging: {
-        client: 'mysql2',
+        client: 'mssql',
         connection: process.env.DB_URL,
     },
     production: {
-        client: 'mysql2',
+        client: 'mssql',
         connection: process.env.DB_URL
     }
   };
